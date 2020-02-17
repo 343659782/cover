@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="be3bf855-6efc-4f60-9d7a-7b296fa09f7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/npc/Lettuce.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/Lettuce.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/npc/Steak.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/Steak.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/npc/TopBread.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/TopBread.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/player/BotBread.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player/BotBread.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

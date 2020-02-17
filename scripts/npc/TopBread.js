@@ -21,11 +21,8 @@ export default class TopBread extends BaseFood {
     init(speed) {
         this.x = tools.rnd(0, window.innerWidth - TOP_BREAD_WIDTH);
         this.y = -this.height;
-
         this[__.speed] = speed;
-
-        this.visible = true
-
+        this.visible = true;
         this.name = "topBread";
     }
 

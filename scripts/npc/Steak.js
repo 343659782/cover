@@ -18,28 +18,25 @@ export default class Steak extends BaseFood {
         super(STEAK_IMG_SRC, STEAK_WIDTH, STEAK_HEIGHT)
     }
 
-    init(speed) {
+    init(speed, score) {
         this.x = tools.rnd(0, window.innerWidth - STEAK_WIDTH);
         // this.x =0;
         this.y = -this.height;
-
         this[__.speed] = speed;
-
         this.visible = true;
-
         this.gain = false;
-
         this.name = "steak";
+        this.score = score;
     }
 
     // 每一帧更新位置
     update() {
-        if (this.gain){
+        if (this.gain) {
             return;
         }
         this.y += this[__.speed];
         // 超出屏幕外回收自身
-        if ( this.y > window.innerHeight + this.height )
+        if (this.y > window.innerHeight + this.height)
             databus.removeSteak(this)
     }
 }

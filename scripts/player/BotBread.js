@@ -9,6 +9,7 @@ const screenHeight = window.innerHeight;
 const BOT_BREAD_IMG_SRC = 'images/bot_bread.png';
 const BOT_BREAD_WIDTH = 80;
 const BOT_BREAD_HEIGHT = 20;
+const INERTIA_COUNT = 10;
 
 let databus = new DataBus();
 

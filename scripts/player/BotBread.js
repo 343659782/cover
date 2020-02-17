@@ -1,5 +1,4 @@
 import Sprite from '../base/sprite'
-import Bullet from './bullet'
 import DataBus from '../databus'
 
 const screenWidth = window.innerWidth;
@@ -9,7 +8,6 @@ const screenHeight = window.innerHeight;
 const BOT_BREAD_IMG_SRC = 'images/bot_bread.png';
 const BOT_BREAD_WIDTH = 80;
 const BOT_BREAD_HEIGHT = 20;
-const INERTIA_COUNT = 10;
 
 let databus = new DataBus();
 
@@ -19,7 +17,7 @@ export default class BotBread extends Sprite {
 
         // 玩家默认处于屏幕底部居中位置
         this.x = screenWidth / 2 - this.width / 2;
-        this.y = screenHeight - this.height - 30;
+        this.y = screenHeight - this.height - 100;
         this.sinkingY = this.y;
 
         // 用于在手指移动的时候标识手指是否已经在飞机上了
@@ -121,12 +119,15 @@ export default class BotBread extends Sprite {
         }).bind(this))
     }
 
-    update() {
+    update(dt) {
         let size = this.foods.length;
         for (let i = 0; i < size; i++) {
             let food = this.foods[i];
             food.x = this.x + this.width * 0.5 - food.width * 0.5;
+            food.coverIndex = i + 1;
+            food.targetX = this.x + this.width * 0.5;
             food.y = this.y - food.offsetY;
+            // food.updatePosX(dt);
         }
 
         if (size > 0) {

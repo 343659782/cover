@@ -1,6 +1,6 @@
 import Pool from './base/pool'
 
-let instance
+let instance;
 
 /**
  * 全局状态管理器
@@ -27,6 +27,7 @@ export default class DataBus {
         this.lettuces = [];
         this.steaks = [];
         this.foods = [];
+        this.gainFoodCount = 0;
         this.gameOver = false
     }
 

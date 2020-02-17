@@ -149,6 +149,7 @@ export default class Main {
     addFood(food) {
         this.music.playExplosion();
         this.player.addFood(food);
+        databus.gainFoodCount = this.player.foods.length;
         if (food.score) {
             databus.score += food.score;
         }
@@ -211,12 +212,12 @@ export default class Main {
     }
 
     // 游戏逻辑更新主函数
-    update() {
+    update(dt) {
         if (databus.gameOver)
             return;
 
         this.bg.update();
-        this.player.update();
+        this.player.update(dt);
 
         databus.bullets
             .concat(databus.enemys)
@@ -241,11 +242,20 @@ export default class Main {
     }
 
     // 实现游戏帧循环
-    loop() {
-        databus.frame++
+    loop(timer) {
+        let dt = 0;
+        if (this.lastTimer) {
+            dt = timer - this.lastTimer;
+        } else {
+            dt = timer;
+        }
+        dt *= 0.001;
+        this.lastTimer = timer;
+        // console.log(dt);
+        databus.frame++;
 
-        this.update()
-        this.render()
+        this.update(dt);
+        this.render();
 
         this.aniId = window.requestAnimationFrame(
             this.bindLoop,

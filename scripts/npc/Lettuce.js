@@ -3,7 +3,7 @@ import Tools from '../utils/Tools'
 import BaseFood from "./BaseFood";
 
 const LETTUCE_IMG_SRC = 'images/lettuce.png';
-const LETTUCE_WIDTH = 50;
+const LETTUCE_WIDTH = 70;
 const LETTUCE_HEIGHT = 20;
 
 const __ = {

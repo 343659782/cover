@@ -5,6 +5,7 @@ import Music from './runtime/music'
 import DataBus from './databus'
 import TopBread from "./npc/TopBread";
 import Lettuce from "./npc/Lettuce";
+import Steak from "./npc/Steak";
 import BotBread from "./player/BotBread";
 
 let ctx = canvas.getContext('2d')
@@ -53,28 +54,37 @@ export default class Main {
      */
     enemyGenerate() {
         if (databus.frame % 30 === 0) {
-            let enemy = databus.pool.getItemByClass('enemy', Enemy)
-            enemy.init(6)
+            let enemy = databus.pool.getItemByClass('enemy', Enemy);
+            enemy.init(6);
             databus.enemys.push(enemy)
         }
     }
 
     topBreadGenerate() {
-      if (databus.frame % 100 === 0) {
-        this.music.playShoot();
-        let topBread = databus.pool.getItemByClass('topBread', TopBread)
-        topBread.init(6)
-        databus.topBreads.push(topBread)
-      }
+        if (databus.frame % 100 === 0) {
+            this.music.playShoot();
+            let topBread = databus.pool.getItemByClass('topBread', TopBread);
+            topBread.init(6)
+            databus.topBreads.push(topBread)
+        }
     }
 
     lettuceGenerate() {
-      if (databus.frame % 80 === 0) {
-        this.music.playShoot();
-        let lettuce = databus.pool.getItemByClass('lettuce', Lettuce)
-        lettuce.init(6)
-        databus.lettuces.push(lettuce);
-      }
+        if (databus.frame % 80 === 0) {
+            this.music.playShoot();
+            let lettuce = databus.pool.getItemByClass('lettuce', Lettuce);
+            lettuce.init(6)
+            databus.lettuces.push(lettuce);
+        }
+    }
+
+    steakGenerate() {
+        if (databus.frame % 180 === 0) {
+            this.music.playShoot();
+            let steak = databus.pool.getItemByClass('steak', Steak);
+            steak.init(8);
+            databus.steaks.push(steak);
+        }
     }
 
     // 全局碰撞检测
@@ -122,6 +132,15 @@ export default class Main {
                 break
             }
         }
+
+        for (let i = 0, il = databus.steaks.length; i < il; i++) {
+            let steak = databus.steaks[i];
+
+            if (this.player.isCollideWithFood(steak)) {
+                this.player.addFood(steak);
+                break
+            }
+        }
     }
 
     // 游戏结束后的触摸事件处理逻辑
@@ -153,6 +172,7 @@ export default class Main {
             .concat(databus.enemys)
             .concat(databus.lettuces)
             .concat(databus.topBreads)
+            .concat(databus.steaks)
             .forEach((item) => {
                 item.drawToCanvas(ctx)
             })
@@ -191,6 +211,7 @@ export default class Main {
             .concat(databus.enemys)
             .concat(databus.lettuces)
             .concat(databus.topBreads)
+            .concat(databus.steaks)
             .forEach((item) => {
                 item.update()
             })
@@ -198,6 +219,7 @@ export default class Main {
         // this.enemyGenerate()
         this.topBreadGenerate();
         this.lettuceGenerate();
+        this.steakGenerate();
 
         this.collisionDetection()
 

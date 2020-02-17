@@ -25,6 +25,7 @@ export default class DataBus {
         this.animations = [];
         this.topBreads = [];
         this.lettuces = [];
+        this.steaks = [];
         this.foods = [];
         this.gameOver = false
     }
@@ -80,5 +81,24 @@ export default class DataBus {
         temp.visible = false;
         this.lettuces.splice(index, 1);
         this.pool.recover('lettuce', lettuce)
+    }
+
+    /**
+     * 回收子弹，进入对象池
+     * 此后不进入帧循环
+     */
+    removeSteak(steak) {
+        let index = 0;
+        for (let i = 0; i < this.steaks.length; i++) {
+            if (this.steaks[i] === steak) {
+                index = i;
+                break;
+            }
+        }
+
+        let temp = this.steaks[index];
+        temp.visible = false;
+        this.steaks.splice(index, 1);
+        this.pool.recover('steak', steak)
     }
 }

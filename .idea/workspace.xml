@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be3bf855-6efc-4f60-9d7a-7b296fa09f7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/npc/Steak.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/base/animation.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/base/animation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/base/pool.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/base/pool.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/base/sprite.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/base/sprite.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/databus.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/databus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/libs/symbol.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/libs/symbol.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/libs/weapp-adapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/libs/weapp-adapter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/npc/BaseFood.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/BaseFood.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/npc/Lettuce.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/Lettuce.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/npc/TopBread.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/TopBread.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/npc/enemy.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/enemy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/player/BotBread.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player/BotBread.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/player/bullet.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player/bullet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/player/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/runtime/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/runtime/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/runtime/gameinfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/runtime/gameinfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/runtime/music.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/runtime/music.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/utils/Tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/Tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/databus.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/databus.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/player/BotBread.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player/BotBread.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

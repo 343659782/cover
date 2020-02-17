@@ -83,7 +83,7 @@ export default class BotBread extends Sprite {
      */
     initEvent() {
         canvas.addEventListener('touchstart', ((e) => {
-            e.preventDefault()
+            e.preventDefault();
 
             let x = e.touches[0].clientX;
             let y = e.touches[0].clientY;
@@ -98,6 +98,9 @@ export default class BotBread extends Sprite {
         }).bind(this));
 
         canvas.addEventListener('touchmove', ((e) => {
+            if (databus.gameOver) {
+                return;
+            }
             e.preventDefault();
 
             let x = e.touches[0].clientX;
@@ -123,7 +126,7 @@ export default class BotBread extends Sprite {
     }
 
     isCollideWithFood(sp) {
-        if (sp.gain){
+        if (sp.gain) {
             return;
         }
         if (this.foods.length > 0) {
@@ -134,7 +137,7 @@ export default class BotBread extends Sprite {
     }
 
     addFood(food) {
-        if (food.gain){
+        if (food.gain) {
             return;
         }
         food.gain = true;

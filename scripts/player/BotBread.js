@@ -156,14 +156,14 @@ export default class BotBread extends Sprite {
             return;
         }
         food.gain = true;
-        let totalHeight = this.height;
-        this.foods.forEach((food) => {
-            totalHeight += food.height;
-        });
-        food.offsetY = totalHeight;
+        if (this.foods.length > 0) {
+            food.offsetY = this.foods[this.foods.length - 1].offsetY + food.height * 0.5;
+        } else {
+            food.offsetY = this.height * 0.5;
+        }
         this.foods.push(food);
-        totalHeight += food.height;
-        this.collideHeight = totalHeight;
+
+        this.collideHeight = this.y - food.offsetY - food.height * 0.5;
     }
 
     sinkUpdate() {

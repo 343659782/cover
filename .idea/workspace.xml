@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be3bf855-6efc-4f60-9d7a-7b296fa09f7c" name="Default Changelist" comment="" />
+    <list default="true" id="be3bf855-6efc-4f60-9d7a-7b296fa09f7c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/sshkey" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sshkey.pub" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +16,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XtmQ34ktMBdLHwB9ImBR1WGwQS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -131,7 +137,7 @@
       <updated>1581873745953</updated>
       <workItem from="1581873749076" duration="41000" />
       <workItem from="1581874770604" duration="5170000" />
-      <workItem from="1581912706299" duration="6920000" />
+      <workItem from="1581912706299" duration="7519000" />
     </task>
     <servers />
   </component>

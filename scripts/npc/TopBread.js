@@ -25,6 +25,8 @@ export default class TopBread extends BaseFood {
         this[__.speed] = speed;
 
         this.visible = true
+
+        this.name = "topBread";
     }
 
     // 每一帧更新位置

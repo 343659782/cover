@@ -28,6 +28,8 @@ export default class Lettuce extends BaseFood {
         this.visible = true;
 
         this.gain = false;
+
+        this.name = "lettuce";
     }
 
     // 每一帧更新位置

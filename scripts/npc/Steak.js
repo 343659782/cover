@@ -28,6 +28,8 @@ export default class Steak extends BaseFood {
         this.visible = true;
 
         this.gain = false;
+
+        this.name = "steak";
     }
 
     // 每一帧更新位置
@@ -38,6 +40,6 @@ export default class Steak extends BaseFood {
         this.y += this[__.speed];
         // 超出屏幕外回收自身
         if ( this.y > window.innerHeight + this.height )
-            databus.removeLettuces(this)
+            databus.removeSteak(this)
     }
 }

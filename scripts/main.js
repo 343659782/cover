@@ -73,7 +73,7 @@ export default class Main {
         if (databus.frame % 80 === 0) {
             this.music.playShoot();
             let lettuce = databus.pool.getItemByClass('lettuce', Lettuce);
-            lettuce.init(6)
+            lettuce.init(3);
             databus.lettuces.push(lettuce);
         }
     }

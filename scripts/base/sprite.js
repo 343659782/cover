@@ -41,15 +41,15 @@ export default class Sprite {
             return false;
 
         let spX = sp.x + sp.width * 0.5;
-        let spY = sp.y + sp.height * 0.5;
+        let spY = sp.y - sp.height * 0.5;
         let thisX = this.x + this.width * 0.5;
-        let thisY = this.y + this.height * 0.5;
+        let thisY = this.y - this.height * 0.5;
 
         let disX = Math.abs(spX - thisX);
         let disY = Math.abs(spY - thisY);
 
         let sax = sp.width + this.width;
         let say = sp.height + this.height;
-        return !!(disX <= sax && disY <= say);
+        return !!(disX <= sax * 0.5 && disY <= say * 0.5);
     }
 }

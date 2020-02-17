@@ -19,6 +19,7 @@ export default class BotBread extends Sprite {
         // 玩家默认处于屏幕底部居中位置
         this.x = screenWidth / 2 - this.width / 2;
         this.y = screenHeight - this.height - 30;
+        this.sinkingY = this.y;
 
         // 用于在手指移动的时候标识手指是否已经在飞机上了
         this.touched = false;
@@ -29,7 +30,8 @@ export default class BotBread extends Sprite {
         this.collideHeight = BOT_BREAD_HEIGHT;
 
         // 初始化事件监听
-        this.initEvent()
+        this.initEvent();
+
     }
 
     reset() {
@@ -44,12 +46,13 @@ export default class BotBread extends Sprite {
      * @return {Boolean}: 用于标识手指是否在飞机上的布尔值
      */
     checkIsFingerOnAir(x, y) {
-        const deviation = 30
+        const deviation = 30;
 
         return !!(x >= this.x - deviation
-            && y >= this.y - deviation
+            // && y >= this.y - deviation
             && x <= this.x + this.width + deviation
-            && y <= this.y + this.height + deviation)
+            // && y <= this.y + this.height + deviation
+        )
     }
 
     /**
@@ -88,7 +91,6 @@ export default class BotBread extends Sprite {
             let x = e.touches[0].clientX;
             let y = e.touches[0].clientY;
 
-            //
             if (this.checkIsFingerOnAir(x, y)) {
                 this.touched = true;
 
@@ -119,10 +121,21 @@ export default class BotBread extends Sprite {
     }
 
     update() {
-        this.foods.forEach((food) => {
+        let size = this.foods.length;
+        for (let i = 0; i < size; i++) {
+            let food = this.foods[i];
             food.x = this.x + this.width * 0.5 - food.width * 0.5;
             food.y = this.y - food.offsetY;
-        });
+        }
+
+        if (size > 0) {
+            let topFood = this.foods[size - 1];
+            if (topFood.y < screenHeight * 0.5) {
+                this.sinkingY = screenHeight * 0.5 + this.collideHeight;
+            }
+        }
+
+        this.sinkUpdate();
     }
 
     isCollideWithFood(sp) {
@@ -149,5 +162,11 @@ export default class BotBread extends Sprite {
         this.foods.push(food);
         totalHeight += food.height;
         this.collideHeight = totalHeight;
+    }
+
+    sinkUpdate() {
+        if (this.y < this.sinkingY - 30) {
+            this.y += 2;
+        }
     }
 }

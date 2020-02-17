@@ -1,4 +1,3 @@
-import Player from './player/index'
 import Enemy from './npc/enemy'
 import BackGround from './runtime/background'
 import GameInfo from './runtime/gameinfo'

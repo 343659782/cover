@@ -122,7 +122,7 @@ export default class Main {
         for (let i = 0, il = databus.topBreads.length; i < il; i++) {
             let topBread = databus.topBreads[i];
             if (this.player.isCollideWithFood(topBread)) {
-                databus.gameOver = true;
+                // databus.gameOver = true;
                 break
             }
         }

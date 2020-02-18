@@ -23,7 +23,7 @@ export default class BaseFood extends sprite {
 
         let distance = Math.abs(originTargetX - this.x);
         if (distance > 1) {
-            this.x = this.x + (originTargetX - this.x) * dt * this.smooth;
+            this.x = this.x + (originTargetX - this.x) * dt * this.smooth * (databus.gainFoodCount - this.coverIndex + 1);
         } else {
             this.x = originTargetX;
         }

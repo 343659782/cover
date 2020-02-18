@@ -123,11 +123,11 @@ export default class BotBread extends Sprite {
         let size = this.foods.length;
         for (let i = 0; i < size; i++) {
             let food = this.foods[i];
-            food.x = this.x + this.width * 0.5 - food.width * 0.5;
+            // food.x = this.x + this.width * 0.5 - food.width * 0.5;
             food.coverIndex = i + 1;
             food.targetX = this.x + this.width * 0.5;
             food.y = this.y - food.offsetY;
-            // food.updatePosX(dt);
+            food.updatePosX(dt);
         }
 
         if (size > 0) {

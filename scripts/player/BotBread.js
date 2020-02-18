@@ -26,7 +26,7 @@ export default class BotBread extends Sprite {
         this.foods = [];
 
         this.collideWidth = BOT_BREAD_WIDTH;
-        this.collideHeight = BOT_BREAD_HEIGHT;
+        this.topY = BOT_BREAD_HEIGHT;
 
         // 初始化事件监听
         this.initEvent();
@@ -132,8 +132,8 @@ export default class BotBread extends Sprite {
 
         if (size > 0) {
             let topFood = this.foods[size - 1];
-            if (topFood.y < screenHeight * 0.5) {
-                this.sinkingY = screenHeight * 0.5 + this.collideHeight;
+            if (topFood.y < screenHeight * 0.7) {
+                this.sinkingY = screenHeight * 0.7 + this.topY;
             }
         }
 
@@ -163,7 +163,7 @@ export default class BotBread extends Sprite {
         }
         this.foods.push(food);
 
-        this.collideHeight = this.y - food.offsetY - food.height * 0.5;
+        this.topY = food.offsetY - food.height * 0.5;
     }
 
     sinkUpdate() {

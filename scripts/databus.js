@@ -26,6 +26,7 @@ export default class DataBus {
         this.topBreads = [];
         this.lettuces = [];
         this.steaks = [];
+        this.viruses = [];
         this.foods = [];
         this.gainFoodCount = 0;
         this.gameOver = false
@@ -101,5 +102,24 @@ export default class DataBus {
         temp.visible = false;
         this.steaks.splice(index, 1);
         this.pool.recover('steak', steak)
+    }
+
+    /**
+     * 回收子弹，进入对象池
+     * 此后不进入帧循环
+     */
+    removeVirus(virus) {
+        let index = 0;
+        for (let i = 0; i < this.viruses.length; i++) {
+            if (this.viruses[i] === virus) {
+                index = i;
+                break;
+            }
+        }
+
+        let temp = this.viruses[index];
+        temp.visible = false;
+        this.viruses.splice(index, 1);
+        this.pool.recover('virus', virus)
     }
 }

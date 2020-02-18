@@ -1,4 +1,3 @@
-import Enemy from './npc/enemy'
 import BackGround from './runtime/background'
 import GameInfo from './runtime/gameinfo'
 import Music from './runtime/music'
@@ -7,12 +6,14 @@ import TopBread from "./npc/TopBread";
 import Lettuce from "./npc/Lettuce";
 import Steak from "./npc/Steak";
 import BotBread from "./player/BotBread";
+import Virus from "./npc/Virus";
 
 let ctx = canvas.getContext('2d');
 let databus = new DataBus();
 
 const LETTUCE_SCORE = 10;
 const STEAK_SCORE = 20;
+const VIRUS_SCORE = 30;
 
 /**
  * 游戏主函数
@@ -55,13 +56,13 @@ export default class Main {
      * 随着帧数变化的敌机生成逻辑
      * 帧数取模定义成生成的频率
      */
-    enemyGenerate() {
-        if (databus.frame % 30 === 0) {
-            let enemy = databus.pool.getItemByClass('enemy', Enemy);
-            enemy.init(6);
-            databus.enemys.push(enemy)
-        }
-    }
+    // enemyGenerate() {
+    //     if (databus.frame % 30 === 0) {
+    //         let enemy = databus.pool.getItemByClass('enemy', Enemy);
+    //         enemy.init(6);
+    //         databus.enemys.push(enemy)
+    //     }
+    // }
 
     topBreadGenerate() {
         if (databus.frame % 100 === 0) {
@@ -74,7 +75,6 @@ export default class Main {
 
     lettuceGenerate() {
         if (databus.frame % 80 === 0) {
-            this.music.playShoot();
             let lettuce = databus.pool.getItemByClass('lettuce', Lettuce);
             lettuce.init(3, LETTUCE_SCORE);
             databus.lettuces.push(lettuce);
@@ -83,10 +83,17 @@ export default class Main {
 
     steakGenerate() {
         if (databus.frame % 180 === 0) {
-            this.music.playShoot();
             let steak = databus.pool.getItemByClass('steak', Steak);
             steak.init(8, STEAK_SCORE);
             databus.steaks.push(steak);
+        }
+    }
+
+    virusGenerate() {
+        if (databus.frame % 250 === 0) {
+            let virus = databus.pool.getItemByClass('virus', Virus);
+            virus.init(2, VIRUS_SCORE);
+            databus.viruses.push(virus);
         }
     }
 
@@ -94,36 +101,36 @@ export default class Main {
     collisionDetection() {
         let that = this
 
-        databus.bullets.forEach((bullet) => {
-            for (let i = 0, il = databus.enemys.length; i < il; i++) {
-                let enemy = databus.enemys[i];
+        // databus.bullets.forEach((bullet) => {
+        //     for (let i = 0, il = databus.enemys.length; i < il; i++) {
+        //         let enemy = databus.enemys[i];
+        //
+        //         if (!enemy.isPlaying && enemy.isCollideWith(bullet)) {
+        //             enemy.playAnimation();
+        //             that.music.playExplosion();
+        //
+        //             bullet.visible = false;
+        //             databus.score += 1;
+        //
+        //             break
+        //         }
+        //     }
+        // })
 
-                if (!enemy.isPlaying && enemy.isCollideWith(bullet)) {
-                    enemy.playAnimation();
-                    that.music.playExplosion();
-
-                    bullet.visible = false;
-                    databus.score += 1;
-
-                    break
-                }
-            }
-        })
-
-        for (let i = 0, il = databus.enemys.length; i < il; i++) {
-            let enemy = databus.enemys[i];
-
-            if (this.player.isCollideWith(enemy)) {
-                databus.gameOver = true;
-                break
-            }
-        }
+        // for (let i = 0, il = databus.enemys.length; i < il; i++) {
+        //     let enemy = databus.enemys[i];
+        //
+        //     if (this.player.isCollideWith(enemy)) {
+        //         databus.gameOver = true;
+        //         break
+        //     }
+        // }
 
         for (let i = 0, il = databus.topBreads.length; i < il; i++) {
             let topBread = databus.topBreads[i];
             if (this.player.isCollideWithFood(topBread)) {
                 databus.gameOver = true;
-                break
+                break;
             }
         }
 
@@ -141,6 +148,15 @@ export default class Main {
 
             if (this.player.isCollideWithFood(steak)) {
                 this.addFood(steak);
+                break
+            }
+        }
+
+        for (let i = 0, il = databus.viruses.length; i < il; i++) {
+            let virus = databus.viruses[i];
+
+            if (this.player.isCollideWithFood(virus)) {
+                this.addFood(virus);
                 break
             }
         }
@@ -185,6 +201,7 @@ export default class Main {
             .concat(databus.lettuces)
             .concat(databus.topBreads)
             .concat(databus.steaks)
+            .concat(databus.viruses)
             .forEach((item) => {
                 item.drawToCanvas(ctx)
             })
@@ -224,6 +241,7 @@ export default class Main {
             .concat(databus.lettuces)
             .concat(databus.topBreads)
             .concat(databus.steaks)
+            .concat(databus.viruses)
             .forEach((item) => {
                 item.update()
             })
@@ -232,6 +250,7 @@ export default class Main {
         this.topBreadGenerate();
         this.lettuceGenerate();
         this.steakGenerate();
+        this.virusGenerate();
 
         this.collisionDetection()
 

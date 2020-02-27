@@ -48,6 +48,9 @@ export default class Virus extends BaseFood {
 
     // 每一帧更新子弹位置
     update(dt) {
+        if (this.gain) {
+            return;
+        }
         this.y += this[__.speed];
 
         // 对象回收

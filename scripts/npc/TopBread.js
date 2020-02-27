@@ -2,7 +2,7 @@ import DataBus   from '../databus'
 import Tools from '../utils/Tools'
 import BaseFood from "./BaseFood";
 
-const TOP_BREAD_IMG_SRC = 'images/bot_bread.png';
+const TOP_BREAD_IMG_SRC = 'images/top_bread.png';
 const TOP_BREAD_WIDTH   = 60;
 const TOP_BREAD_HEIGHT  = 20;
 

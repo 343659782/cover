@@ -6,8 +6,8 @@ const screenHeight = window.innerHeight;
 
 // 玩家相关常量设置
 const BOT_BREAD_IMG_SRC = 'images/bot_bread.png';
-const BOT_BREAD_WIDTH = 80;
-const BOT_BREAD_HEIGHT = 20;
+const BOT_BREAD_WIDTH = 85;
+const BOT_BREAD_HEIGHT = 25;
 
 let databus = new DataBus();
 

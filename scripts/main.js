@@ -38,10 +38,6 @@ export default class Main {
         );
 
         this.bg = new BackGround(ctx);
-        // let pizza = databus.pool.getItemByClass('pizza', Pizza);
-        // pizza.init(5, PIZZA_SCORE);
-        // databus.pizzas.push(pizza);
-        // databus.removePizza(pizza);
         // this.player = new Player(ctx);
         this.player = new BotBread(ctx);
         this.gameinfo = new GameInfo();

@@ -27,12 +27,12 @@ export default class Pizza extends BaseFood {
 
     }
 
-    init(speed) {
+    init(speed, score) {
         this.x = tools.rnd(0, window.innerWidth - PIZZA_WIDTH);
         this.y = -this.height;
 
         this[__.speed] = speed;
-
+        this.score = score;
         this.visible = true
     }
 

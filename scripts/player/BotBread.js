@@ -6,8 +6,8 @@ const screenHeight = window.innerHeight;
 
 // 玩家相关常量设置
 const BOT_BREAD_IMG_SRC = 'images/bot_bread.png';
-const BOT_BREAD_WIDTH = 85;
-const BOT_BREAD_HEIGHT = 25;
+const BOT_BREAD_WIDTH = 60;
+const BOT_BREAD_HEIGHT = 35;
 
 let databus = new DataBus();
 
@@ -159,7 +159,7 @@ export default class BotBread extends Sprite {
         if (this.foods.length > 0) {
             food.offsetY = this.foods[this.foods.length - 1].offsetY + food.height * 0.5;
         } else {
-            food.offsetY = this.height * 0.5;
+            food.offsetY = this.height * 0.15;
         }
         this.foods.push(food);
 

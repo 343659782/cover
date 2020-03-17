@@ -1,11 +1,12 @@
-import Animation from '../base/animation'
 import DataBus from '../databus'
 import Tools from '../utils/Tools'
 import BaseFood from "./BaseFood";
 
-const PIZZA_IMG_SRC = 'images/pizza_11.png';
-const PIZZA_WIDTH = 70;
-const PIZZA_HEIGHT = 30;
+const PIZZA_IMG_PREFIX = 'images/binggan';
+const PIZZA_FRAME_COUNT = 6;
+const BINGGAN_IMG_SRC = PIZZA_IMG_PREFIX + '6.png';
+const BINGGAN_WIDTH = 60;
+const BINGGAN_HEIGHT = 25;
 
 const __ = {
     speed: Symbol('speed')
@@ -14,9 +15,9 @@ const __ = {
 let databus = new DataBus();
 let tools = new Tools();
 
-export default class Pizza extends BaseFood {
+export default class Binggan extends BaseFood {
     constructor() {
-        super(PIZZA_IMG_SRC, PIZZA_WIDTH, PIZZA_HEIGHT);
+        super(BINGGAN_IMG_SRC, BINGGAN_WIDTH, BINGGAN_HEIGHT);
 
         this.initExplosionAnimation();
         this.interval = 1000 / 6;
@@ -24,24 +25,22 @@ export default class Pizza extends BaseFood {
         this.playing = false;
         this.timer = 0;
         this.animTime = 1;
-
+        this.poolKey = "binggan";
+        this.score = 400;
+        this.speed = 5;
     }
 
-    init(speed, score) {
-        this.x = tools.rnd(0, window.innerWidth - PIZZA_WIDTH);
+    init() {
+        this.x = tools.rnd(0, window.innerWidth - BINGGAN_WIDTH);
         this.y = -this.height;
 
-        this[__.speed] = speed;
-        this.score = score;
+        this[__.speed] = this.speed;
         this.visible = true
     }
 
     // 预定义爆炸的帧动画
     initExplosionAnimation() {
         let frames = []
-
-        const PIZZA_IMG_PREFIX = 'images/pizza_';
-        const PIZZA_FRAME_COUNT = 11;
 
         for (let i = 0; i < PIZZA_FRAME_COUNT; i++) {
             frames.push(PIZZA_IMG_PREFIX + (i + 1) + '.png')
@@ -52,13 +51,6 @@ export default class Pizza extends BaseFood {
 
     // 每一帧更新子弹位置
     update(dt) {
-        // if (this.playing) {
-        //     this.timer += dt;
-        //     if (this.timer >= this.animTime) {
-        //         this.stop();
-        //         this.visible = true
-        //     }
-        // }
         if (this.gain) {
             return;
         }

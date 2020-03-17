@@ -8,14 +8,11 @@ import Steak from "./npc/Steak";
 import BotBread from "./player/BotBread";
 import Virus from "./npc/Virus";
 import Pizza from "./npc/Pizza";
+import Binggan from "./npc/Binggan";
 
 let ctx = canvas.getContext('2d');
 let databus = new DataBus();
 
-const LETTUCE_SCORE = 10;
-const STEAK_SCORE = 20;
-const VIRUS_SCORE = 30;
-const PIZZA_SCORE = 40;
 const DEBUG = false;
 
 /**
@@ -55,18 +52,6 @@ export default class Main {
         )
     }
 
-    /**
-     * 随着帧数变化的敌机生成逻辑
-     * 帧数取模定义成生成的频率
-     */
-    // enemyGenerate() {
-    //     if (databus.frame % 30 === 0) {
-    //         let enemy = databus.pool.getItemByClass('enemy', Enemy);
-    //         enemy.init(6);
-    //         databus.enemys.push(enemy)
-    //     }
-    // }
-
     topBreadGenerate() {
         if (databus.frame % 100 === 0) {
             this.music.playShoot();
@@ -76,66 +61,16 @@ export default class Main {
         }
     }
 
-    lettuceGenerate() {
-        if (databus.frame % 80 === 0) {
-            let lettuce = databus.pool.getItemByClass('lettuce', Lettuce);
-            lettuce.init(3, LETTUCE_SCORE);
-            databus.lettuces.push(lettuce);
-        }
-    }
-
-    steakGenerate() {
-        if (databus.frame % 180 === 0) {
-            let steak = databus.pool.getItemByClass('steak', Steak);
-            steak.init(8, STEAK_SCORE);
-            databus.steaks.push(steak);
-        }
-    }
-
-    virusGenerate() {
-        if (databus.frame % 250 === 0) {
-            let virus = databus.pool.getItemByClass('virus', Virus);
-            virus.init(2, VIRUS_SCORE);
-            databus.viruses.push(virus);
-        }
-    }
-
-    pizzasGenerate() {
+    binggansGenerate() {
         if (databus.frame % 150 === 0) {
-            let pizza = databus.pool.getItemByClass('pizza', Pizza);
-            pizza.init(5, PIZZA_SCORE);
-            databus.pizzas.push(pizza);
+            let binggan = databus.pool.getItemByClass('binggan', Binggan);
+            binggan.init();
+            databus.foods.push(binggan);
         }
     }
 
     // 全局碰撞检测
     collisionDetection() {
-        let that = this
-
-        // databus.bullets.forEach((bullet) => {
-        //     for (let i = 0, il = databus.enemys.length; i < il; i++) {
-        //         let enemy = databus.enemys[i];
-        //
-        //         if (!enemy.isPlaying && enemy.isCollideWith(bullet)) {
-        //             enemy.playAnimation();
-        //             that.music.playExplosion();
-        //
-        //             bullet.visible = false;
-        //             databus.score += 1;
-        //
-        //             break
-        //         }
-        //     }
-        // })
-
-        // for (let i = 0, il = databus.enemys.length; i < il; i++) {
-        //     let enemy = databus.enemys[i];
-        //
-        //     if (this.player.isCollideWith(enemy)) {
-        //         databus.gameOver = true;
-        //         break
-        //     }
-        // }
 
         for (let i = 0, il = databus.topBreads.length; i < il; i++) {
             let topBread = databus.topBreads[i];
@@ -147,38 +82,11 @@ export default class Main {
             }
         }
 
-        for (let i = 0, il = databus.lettuces.length; i < il; i++) {
-            let lettuce = databus.lettuces[i];
+        for (let i = 0, il = databus.foods.length; i < il; i++) {
+            let food = databus.foods[i];
 
-            if (this.player.isCollideWithFood(lettuce)) {
-                this.addFood(lettuce);
-                break
-            }
-        }
-
-        for (let i = 0, il = databus.steaks.length; i < il; i++) {
-            let steak = databus.steaks[i];
-
-            if (this.player.isCollideWithFood(steak)) {
-                this.addFood(steak);
-                break
-            }
-        }
-
-        for (let i = 0, il = databus.viruses.length; i < il; i++) {
-            let virus = databus.viruses[i];
-
-            if (this.player.isCollideWithFood(virus)) {
-                this.addFood(virus);
-                break
-            }
-        }
-
-        for (let i = 0, il = databus.pizzas.length; i < il; i++) {
-            let pizza = databus.pizzas[i];
-
-            if (this.player.isCollideWithFood(pizza)) {
-                this.addFood(pizza);
+            if (this.player.isCollideWithFood(food)) {
+                this.addFood(food);
                 break
             }
         }
@@ -220,13 +128,8 @@ export default class Main {
 
         this.player.drawToCanvas(ctx);
 
-        databus.bullets
-            .concat(databus.enemys)
-            .concat(databus.lettuces)
-            .concat(databus.topBreads)
-            .concat(databus.steaks)
-            .concat(databus.viruses)
-            .concat(databus.pizzas)
+        databus.topBreads
+            .concat(databus.foods)
             .forEach((item) => {
                 item.drawToCanvas(ctx)
             })
@@ -260,30 +163,16 @@ export default class Main {
         this.bg.update();
         this.player.update(dt);
 
-        databus.bullets
-            .concat(databus.enemys)
-            .concat(databus.lettuces)
-            .concat(databus.topBreads)
-            .concat(databus.steaks)
-            .concat(databus.viruses)
-            .concat(databus.pizzas)
+        databus.topBreads
+            .concat(databus.foods)
             .forEach((item) => {
                 item.update()
             })
 
-        // this.enemyGenerate()
         this.topBreadGenerate();
-        // this.lettuceGenerate();
-        // this.steakGenerate();
-        // this.virusGenerate();
-        this.pizzasGenerate();
+        this.binggansGenerate();
 
-        this.collisionDetection()
-
-        if (databus.frame % 20 === 0) {
-            // this.player.shoot()
-            // this.music.playShoot()
-        }
+        this.collisionDetection();
     }
 
     // 实现游戏帧循环

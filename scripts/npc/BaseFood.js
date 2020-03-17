@@ -16,6 +16,11 @@ export default class BaseFood extends animation {
         this.smooth = 8;
         this.targetX = 0;
         this.coverIndex = 0;
+        this.poolKey = "";
+        // 层叠盖住百分比
+        this.heightPercent = 0.5;
+        this.score = 0;
+        this.speed = 5;
     }
 
     updatePosX(dt) {

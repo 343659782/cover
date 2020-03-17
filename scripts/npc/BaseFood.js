@@ -21,7 +21,9 @@ export default class BaseFood extends animation {
         this.heightPercent = 0.5;
         this.score = 0;
         this.speed = 5;
-        this.interval = 1000 / 6;
+
+        // 旋转速度  分母越大旋转越快
+        this.interval = 1000 / 5;
     }
 
     updatePosX(dt) {

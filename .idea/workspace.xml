@@ -2,39 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be3bf855-6efc-4f60-9d7a-7b296fa09f7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/npc/Binggan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/npc/Cake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/npc/Orange.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/bg1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/bot_bread.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/bot_bread.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/lettuce.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/lettuce2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pizza_9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/virus_9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/project.config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/databus.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/databus.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/npc/BaseFood.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/BaseFood.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/npc/Pizza.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/Pizza.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/player/BotBread.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/player/BotBread.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/npc/Binggan.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/npc/Binggan.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +156,7 @@
       <workItem from="1582018423665" duration="6265000" />
       <workItem from="1582472732861" duration="3475000" />
       <workItem from="1583737923217" duration="1024000" />
-      <workItem from="1584462393189" duration="2392000" />
+      <workItem from="1584462393189" duration="3091000" />
     </task>
     <servers />
   </component>

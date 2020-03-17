@@ -2,11 +2,11 @@ import DataBus from '../databus'
 import Tools from '../utils/Tools'
 import BaseFood from "./BaseFood";
 
-const BINGGAN_IMG_PREFIX = 'images/binggan';
-const BINGGAN_FRAME_COUNT = 6;
-const BINGGAN_IMG_SRC = BINGGAN_IMG_PREFIX + '6.png';
-const BINGGAN_WIDTH = 60;
-const BINGGAN_HEIGHT = 25;
+const CAKE_IMG_PREFIX = 'images/dangao';
+const CAKE_FRAME_COUNT = 6;
+const CAKE_IMG_SRC = CAKE_IMG_PREFIX + '6.png';
+const CAKE_WIDTH = 64;
+const CAKE_HEIGHT = 40;
 
 const __ = {
     speed: Symbol('speed')
@@ -15,22 +15,22 @@ const __ = {
 let databus = new DataBus();
 let tools = new Tools();
 
-export default class Binggan extends BaseFood {
+export default class Cake extends BaseFood {
     constructor() {
-        super(BINGGAN_IMG_SRC, BINGGAN_WIDTH, BINGGAN_HEIGHT);
+        super(CAKE_IMG_SRC, CAKE_WIDTH, CAKE_HEIGHT);
 
         this.initExplosionAnimation();
         this.playAnimation(0, false);
         this.playing = false;
         this.timer = 0;
         this.animTime = 1;
-        this.poolKey = "binggan";
-        this.score = 40;
-        this.speed = 5;
+        this.poolKey = "cake";
+        this.score = 20;
+        this.speed = 4;
     }
 
     init() {
-        this.x = tools.rnd(0, window.innerWidth - BINGGAN_WIDTH);
+        this.x = tools.rnd(0, window.innerWidth - CAKE_WIDTH);
         this.y = -this.height;
 
         this[__.speed] = this.speed;
@@ -41,8 +41,8 @@ export default class Binggan extends BaseFood {
     initExplosionAnimation() {
         let frames = []
 
-        for (let i = 0; i < BINGGAN_FRAME_COUNT; i++) {
-            frames.push(BINGGAN_IMG_PREFIX + (i + 1) + '.png')
+        for (let i = 0; i < CAKE_FRAME_COUNT; i++) {
+            frames.push(CAKE_IMG_PREFIX + (i + 1) + '.png')
         }
 
         this.initFrames(frames)

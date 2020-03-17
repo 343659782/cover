@@ -21,6 +21,7 @@ export default class BaseFood extends animation {
         this.heightPercent = 0.5;
         this.score = 0;
         this.speed = 5;
+        this.interval = 1000 / 6;
     }
 
     updatePosX(dt) {

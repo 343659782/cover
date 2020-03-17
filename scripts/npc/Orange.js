@@ -2,11 +2,11 @@ import DataBus from '../databus'
 import Tools from '../utils/Tools'
 import BaseFood from "./BaseFood";
 
-const BINGGAN_IMG_PREFIX = 'images/binggan';
-const BINGGAN_FRAME_COUNT = 6;
-const BINGGAN_IMG_SRC = BINGGAN_IMG_PREFIX + '6.png';
-const BINGGAN_WIDTH = 60;
-const BINGGAN_HEIGHT = 25;
+const ORANGE_IMG_PREFIX = 'images/chengzi';
+const ORANGE_FRAME_COUNT = 6;
+const ORANGE_IMG_SRC = ORANGE_IMG_PREFIX + '6.png';
+const ORANGE_WIDTH = 60;
+const ORANGE_HEIGHT = 25;
 
 const __ = {
     speed: Symbol('speed')
@@ -15,22 +15,22 @@ const __ = {
 let databus = new DataBus();
 let tools = new Tools();
 
-export default class Binggan extends BaseFood {
+export default class Orange extends BaseFood {
     constructor() {
-        super(BINGGAN_IMG_SRC, BINGGAN_WIDTH, BINGGAN_HEIGHT);
+        super(ORANGE_IMG_SRC, ORANGE_WIDTH, ORANGE_HEIGHT);
 
         this.initExplosionAnimation();
         this.playAnimation(0, false);
         this.playing = false;
         this.timer = 0;
         this.animTime = 1;
-        this.poolKey = "binggan";
-        this.score = 40;
-        this.speed = 5;
+        this.poolKey = "orange";
+        this.score = 50;
+        this.speed = 6;
     }
 
     init() {
-        this.x = tools.rnd(0, window.innerWidth - BINGGAN_WIDTH);
+        this.x = tools.rnd(0, window.innerWidth - ORANGE_WIDTH);
         this.y = -this.height;
 
         this[__.speed] = this.speed;
@@ -41,8 +41,8 @@ export default class Binggan extends BaseFood {
     initExplosionAnimation() {
         let frames = []
 
-        for (let i = 0; i < BINGGAN_FRAME_COUNT; i++) {
-            frames.push(BINGGAN_IMG_PREFIX + (i + 1) + '.png')
+        for (let i = 0; i < ORANGE_FRAME_COUNT; i++) {
+            frames.push(ORANGE_IMG_PREFIX + (i + 1) + '.png')
         }
 
         this.initFrames(frames)

@@ -3,12 +3,10 @@ import GameInfo from './runtime/gameinfo'
 import Music from './runtime/music'
 import DataBus from './databus'
 import TopBread from "./npc/TopBread";
-import Lettuce from "./npc/Lettuce";
-import Steak from "./npc/Steak";
 import BotBread from "./player/BotBread";
-import Virus from "./npc/Virus";
-import Pizza from "./npc/Pizza";
 import Binggan from "./npc/Binggan";
+import Orange from "./npc/Orange";
+import Cake from "./npc/Cake";
 
 let ctx = canvas.getContext('2d');
 let databus = new DataBus();
@@ -66,6 +64,22 @@ export default class Main {
             let binggan = databus.pool.getItemByClass('binggan', Binggan);
             binggan.init();
             databus.foods.push(binggan);
+        }
+    }
+
+    orangeGenerate() {
+        if (databus.frame % 170 === 0) {
+            let orange = databus.pool.getItemByClass('orange', Orange);
+            orange.init();
+            databus.foods.push(orange);
+        }
+    }
+
+    cakeGenerate() {
+        if (databus.frame % 170 === 0) {
+            let cake = databus.pool.getItemByClass('cake', Cake);
+            cake.init();
+            databus.foods.push(cake);
         }
     }
 
@@ -171,6 +185,9 @@ export default class Main {
 
         this.topBreadGenerate();
         this.binggansGenerate();
+        this.orangeGenerate();
+        this.cakeGenerate();
+
 
         this.collisionDetection();
     }

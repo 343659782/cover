@@ -1,4 +1,5 @@
 import Pool from './base/pool'
+import ConfigData from "../ConfigData";
 
 let instance;
 
@@ -14,9 +15,16 @@ export default class DataBus {
 
         this.pool = new Pool();
 
-        this.reset()
+        this.restart()
     }
 
+    // 重置游戏
+    restart(){
+        this.levelData = ConfigData.LevelData[0];
+        this.reset();
+    }
+
+    // 重置一关
     reset() {
         this.frame = 0;
         this.score = 0;
@@ -24,7 +32,9 @@ export default class DataBus {
         this.topBreads = [];
         this.foods = [];
         this.gainFoodCount = 0;
-        this.gameOver = false
+        this.gameOver = false;
+        this.gameFinish = false;
+        this.levelOver = false;
     }
 
     /**

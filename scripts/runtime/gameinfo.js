@@ -16,14 +16,25 @@ export default class GameInfo {
         )
     }
 
-    renderGameOver(ctx, score) {
+    renderGameLevel(ctx, text) {
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "20px Arial";
+
+        ctx.fillText(
+            text,
+            screenWidth / 2 - 30,
+            30
+        )
+    }
+
+    renderPanel(ctx, score, title, btnText) {
         ctx.drawImage(atlas, 0, 0, 119, 108, screenWidth / 2 - 150, screenHeight / 2 - 100, 300, 300);
 
         ctx.fillStyle = "#ffffff";
         ctx.font = "20px Arial";
 
         ctx.fillText(
-            '游戏结束',
+            title,
             screenWidth / 2 - 40,
             screenHeight / 2 - 100 + 50
         );
@@ -43,8 +54,8 @@ export default class GameInfo {
         );
 
         ctx.fillText(
-            '重新开始',
-            screenWidth / 2 - 40,
+            btnText,
+            screenWidth / 2 - btnText.length * 10,
             screenHeight / 2 - 100 + 205
         );
 
@@ -58,6 +69,10 @@ export default class GameInfo {
             endX: screenWidth / 2 + 50,
             endY: screenHeight / 2 - 100 + 255
         }
+    }
+
+    renderGameOver(ctx, score) {
+        this.renderPanel(ctx, score, '游戏结束', '重新开始');
     }
 }
 

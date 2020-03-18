@@ -1,6 +1,7 @@
 import DataBus from '../databus'
 import Tools from '../utils/Tools'
 import BaseFood from "./BaseFood";
+import ConfigData from "../../ConfigData";
 
 const ORANGE_IMG_PREFIX = 'images/chengzi';
 const ORANGE_FRAME_COUNT = 6;
@@ -10,7 +11,7 @@ const ORANGE_HEIGHT = 25;
 
 const __ = {
     speed: Symbol('speed')
-}
+};
 
 let databus = new DataBus();
 let tools = new Tools();
@@ -24,9 +25,9 @@ export default class Orange extends BaseFood {
         this.playing = false;
         this.timer = 0;
         this.animTime = 1;
-        this.poolKey = "orange";
-        this.score = 50;
-        this.speed = 6;
+        this.poolKey = ConfigData.orange_key;
+        this.score = ConfigData.orange_score === 0 ? 50 : ConfigData.orange_score;
+        this.speed = ConfigData.orange_fall_speed === 0 ? 5 : ConfigData.orange_fall_speed;
     }
 
     init() {

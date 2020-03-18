@@ -1,6 +1,7 @@
 import DataBus from '../databus'
 import Tools from '../utils/Tools'
 import BaseFood from "./BaseFood";
+import ConfigData from "../../ConfigData";
 
 const CAKE_IMG_PREFIX = 'images/dangao';
 const CAKE_FRAME_COUNT = 6;
@@ -24,9 +25,9 @@ export default class Cake extends BaseFood {
         this.playing = false;
         this.timer = 0;
         this.animTime = 1;
-        this.poolKey = "cake";
-        this.score = 20;
-        this.speed = 4;
+        this.poolKey = ConfigData.cake_key;
+        this.score = ConfigData.cake_score === 0 ? 20 : ConfigData.cake_score;
+        this.speed = ConfigData.cake_fall_speed === 0 ? 5 : ConfigData.cake_fall_speed;
     }
 
     init() {

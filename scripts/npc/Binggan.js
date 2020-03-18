@@ -1,6 +1,7 @@
 import DataBus from '../databus'
 import Tools from '../utils/Tools'
 import BaseFood from "./BaseFood";
+import ConfigData from "../../ConfigData";
 
 const BINGGAN_IMG_PREFIX = 'images/binggan';
 const BINGGAN_FRAME_COUNT = 6;
@@ -10,7 +11,7 @@ const BINGGAN_HEIGHT = 25;
 
 const __ = {
     speed: Symbol('speed')
-}
+};
 
 let databus = new DataBus();
 let tools = new Tools();
@@ -24,9 +25,9 @@ export default class Binggan extends BaseFood {
         this.playing = false;
         this.timer = 0;
         this.animTime = 1;
-        this.poolKey = "binggan";
-        this.score = 40;
-        this.speed = 5;
+        this.poolKey = ConfigData.binggan_key;
+        this.score = ConfigData.binggan_score === 0 ? 40 : ConfigData.binggan_score;
+        this.speed = ConfigData.binggan_fall_speed === 0 ? 5 : ConfigData.binggan_fall_speed;
     }
 
     init() {
@@ -39,13 +40,13 @@ export default class Binggan extends BaseFood {
 
     // 预定义爆炸的帧动画
     initExplosionAnimation() {
-        let frames = []
+        let frames = [];
 
         for (let i = 0; i < BINGGAN_FRAME_COUNT; i++) {
-            frames.push(BINGGAN_IMG_PREFIX + (i + 1) + '.png')
+            frames.push(BINGGAN_IMG_PREFIX + (i + 1) + '.png');
         }
 
-        this.initFrames(frames)
+        this.initFrames(frames);
     }
 
     // 每一帧更新子弹位置

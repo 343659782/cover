@@ -7,6 +7,7 @@ import BotBread from "./player/BotBread";
 import Binggan from "./npc/Binggan";
 import Orange from "./npc/Orange";
 import Cake from "./npc/Cake";
+import ConfigData from "../ConfigData"
 
 let ctx = canvas.getContext('2d');
 let databus = new DataBus();
@@ -19,14 +20,23 @@ const DEBUG = false;
 export default class Main {
     constructor() {
         // 维护当前requestAnimationFrame的id
-        this.aniId = 0
+        this.aniId = 0;
 
         this.restart()
     }
 
-    restart() {
+    nextLevel() {
         databus.reset();
+        databus.levelData = ConfigData.LevelData[databus.levelData.index + 1];
+        this.restart();
+    }
 
+    resetGame() {
+        databus.restart();
+        this.restart();
+    }
+
+    restart() {
         canvas.removeEventListener(
             'touchstart',
             this.touchHandler
@@ -61,7 +71,7 @@ export default class Main {
 
     binggansGenerate() {
         if (databus.frame % 150 === 0) {
-            let binggan = databus.pool.getItemByClass('binggan', Binggan);
+            let binggan = databus.pool.getItemByClass(ConfigData.binggan_key, Binggan);
             binggan.init();
             databus.foods.push(binggan);
         }
@@ -69,7 +79,7 @@ export default class Main {
 
     orangeGenerate() {
         if (databus.frame % 170 === 0) {
-            let orange = databus.pool.getItemByClass('orange', Orange);
+            let orange = databus.pool.getItemByClass(ConfigData.orange_key, Orange);
             orange.init();
             databus.foods.push(orange);
         }
@@ -77,7 +87,7 @@ export default class Main {
 
     cakeGenerate() {
         if (databus.frame % 170 === 0) {
-            let cake = databus.pool.getItemByClass('cake', Cake);
+            let cake = databus.pool.getItemByClass(ConfigData.cake_key, Cake);
             cake.init();
             databus.foods.push(cake);
         }
@@ -112,6 +122,13 @@ export default class Main {
         databus.gainFoodCount = this.player.foods.length;
         if (food.score) {
             databus.score += food.score;
+            if (databus.score >= databus.levelData.pass_score) {
+                if (databus.levelData.index === ConfigData.LevelData.length - 1) {
+                    databus.gameFinish = true;
+                } else {
+                    databus.levelOver = true;
+                }
+            }
         }
     }
 
@@ -128,7 +145,11 @@ export default class Main {
             && x <= area.endX
             && y >= area.startY
             && y <= area.endY)
-            this.restart()
+            if (databus.gameOver || databus.gameFinish) {
+                this.resetGame();
+            } else if (databus.levelOver) {
+                this.nextLevel();
+            }
     }
 
     /**
@@ -156,10 +177,27 @@ export default class Main {
         });
 
         this.gameinfo.renderGameScore(ctx, databus.score);
+        this.gameinfo.renderGameLevel(ctx, databus.levelData.name_str);
 
         // 游戏结束停止帧循环
         if (databus.gameOver) {
             this.gameinfo.renderGameOver(ctx, databus.score);
+
+            if (!this.hasEventBind) {
+                this.hasEventBind = true;
+                this.touchHandler = this.touchEventHandler.bind(this);
+                canvas.addEventListener('touchstart', this.touchHandler)
+            }
+        } else if (databus.levelOver) {
+            this.gameinfo.renderPanel(ctx, databus.score, "恭喜过关", "下一关");
+
+            if (!this.hasEventBind) {
+                this.hasEventBind = true;
+                this.touchHandler = this.touchEventHandler.bind(this);
+                canvas.addEventListener('touchstart', this.touchHandler)
+            }
+        } else if (databus.gameFinish) {
+            this.gameinfo.renderPanel(ctx, databus.score, "恭喜通关", "再玩一次");
 
             if (!this.hasEventBind) {
                 this.hasEventBind = true;
@@ -171,7 +209,7 @@ export default class Main {
 
     // 游戏逻辑更新主函数
     update(dt) {
-        if (databus.gameOver)
+        if (databus.gameOver || databus.levelOver || databus.gameFinish)
             return;
 
         this.bg.update();

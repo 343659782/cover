@@ -5,12 +5,12 @@ let atlas = new Image()
 atlas.src = 'images/Common.png';
 
 export default class GameInfo {
-    renderGameScore(ctx, score) {
+    renderGameScore(ctx, score, passScore) {
         ctx.fillStyle = "#ffffff";
         ctx.font = "20px Arial";
 
         ctx.fillText(
-            score,
+            score + "/" + passScore,
             10,
             30
         )

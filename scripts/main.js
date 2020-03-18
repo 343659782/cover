@@ -176,7 +176,7 @@ export default class Main {
             }
         });
 
-        this.gameinfo.renderGameScore(ctx, databus.score);
+        this.gameinfo.renderGameScore(ctx, databus.score,databus.levelData.pass_score);
         this.gameinfo.renderGameLevel(ctx, databus.levelData.name_str);
 
         // 游戏结束停止帧循环

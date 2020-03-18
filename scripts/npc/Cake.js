@@ -6,8 +6,8 @@ import ConfigData from "../../ConfigData";
 const CAKE_IMG_PREFIX = 'images/dangao';
 const CAKE_FRAME_COUNT = 6;
 const CAKE_IMG_SRC = CAKE_IMG_PREFIX + '6.png';
-const CAKE_WIDTH = ConfigData.cake_width === 0 ? 64 : ConfigData.cake_width;
-const CAKE_HEIGHT = ConfigData.cake_height === 0 ? 40 : ConfigData.cake_height;
+const CAKE_WIDTH = ConfigData.Foods[ConfigData.cake_key]["width"] === 0 ? 64 : ConfigData.Foods[ConfigData.cake_key]["width"];
+const CAKE_HEIGHT = ConfigData.Foods[ConfigData.cake_key]["height"] === 0 ? 40 : ConfigData.Foods[ConfigData.cake_key]["height"];
 
 const __ = {
     speed: Symbol('speed')
@@ -26,8 +26,8 @@ export default class Cake extends BaseFood {
         this.timer = 0;
         this.animTime = 1;
         this.poolKey = ConfigData.cake_key;
-        this.score = ConfigData.cake_score === 0 ? 20 : ConfigData.cake_score;
-        this.speed = ConfigData.cake_fall_speed === 0 ? 5 : ConfigData.cake_fall_speed;
+        this.score = ConfigData.Foods[this.poolKey]["score"] === 0 ? 50 : ConfigData.Foods[this.poolKey]["score"];
+        this.speed = ConfigData.Foods[this.poolKey]["fall_speed"] === 0 ? 5 : ConfigData.Foods[this.poolKey]["fall_speed"];
     }
 
     init() {

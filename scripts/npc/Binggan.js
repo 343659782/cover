@@ -6,8 +6,8 @@ import ConfigData from "../../ConfigData";
 const BINGGAN_IMG_PREFIX = 'images/binggan';
 const BINGGAN_FRAME_COUNT = 6;
 const BINGGAN_IMG_SRC = BINGGAN_IMG_PREFIX + '6.png';
-const BINGGAN_WIDTH = ConfigData.binggan_width === 0 ? 60 : ConfigData.binggan_width;
-const BINGGAN_HEIGHT = ConfigData.binggan_height === 0 ? 25 : ConfigData.binggan_height;
+const BINGGAN_WIDTH = ConfigData.Foods[ConfigData.binggan_key]["width"] === 0 ? 60 : ConfigData.Foods[ConfigData.binggan_key]["width"];
+const BINGGAN_HEIGHT = ConfigData.Foods[ConfigData.binggan_key]["height"] === 0 ? 25 : ConfigData.Foods[ConfigData.binggan_key]["height"];
 
 const __ = {
     speed: Symbol('speed')
@@ -26,8 +26,8 @@ export default class Binggan extends BaseFood {
         this.timer = 0;
         this.animTime = 1;
         this.poolKey = ConfigData.binggan_key;
-        this.score = ConfigData.binggan_score === 0 ? 40 : ConfigData.binggan_score;
-        this.speed = ConfigData.binggan_fall_speed === 0 ? 5 : ConfigData.binggan_fall_speed;
+        this.score = ConfigData.Foods[this.poolKey]["score"] === 0 ? 50 : ConfigData.Foods[this.poolKey]["score"];
+        this.speed = ConfigData.Foods[this.poolKey]["fall_speed"] === 0 ? 5 : ConfigData.Foods[this.poolKey]["fall_speed"];
     }
 
     init() {

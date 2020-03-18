@@ -27,6 +27,17 @@ export default class GameInfo {
         )
     }
 
+    renderFilter(ctx, text){
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "20px Arial";
+
+        ctx.fillText(
+            text,
+            10,
+            60
+        )
+    }
+
     renderPanel(ctx, score, title, btnText) {
         ctx.drawImage(atlas, 0, 0, 119, 108, screenWidth / 2 - 150, screenHeight / 2 - 100, 300, 300);
 

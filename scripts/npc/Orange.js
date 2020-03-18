@@ -6,8 +6,8 @@ import ConfigData from "../../ConfigData";
 const ORANGE_IMG_PREFIX = 'images/chengzi';
 const ORANGE_FRAME_COUNT = 6;
 const ORANGE_IMG_SRC = ORANGE_IMG_PREFIX + '6.png';
-const ORANGE_WIDTH = ConfigData.orange_width === 0 ? 60 : ConfigData.orange_width;
-const ORANGE_HEIGHT = ConfigData.orange_height === 0 ? 25 : ConfigData.orange_height;
+const ORANGE_WIDTH = ConfigData.Foods[ConfigData.orange_key]["width"] === 0 ? 60 : ConfigData.Foods[ConfigData.orange_key]["width"];
+const ORANGE_HEIGHT = ConfigData.Foods[ConfigData.orange_key]["height"] === 0 ? 25 : ConfigData.Foods[ConfigData.orange_key]["height"];
 
 const __ = {
     speed: Symbol('speed')
@@ -26,8 +26,8 @@ export default class Orange extends BaseFood {
         this.timer = 0;
         this.animTime = 1;
         this.poolKey = ConfigData.orange_key;
-        this.score = ConfigData.orange_score === 0 ? 50 : ConfigData.orange_score;
-        this.speed = ConfigData.orange_fall_speed === 0 ? 5 : ConfigData.orange_fall_speed;
+        this.score = ConfigData.Foods[this.poolKey]["score"] === 0 ? 50 : ConfigData.Foods[this.poolKey]["score"];
+        this.speed = ConfigData.Foods[this.poolKey]["fall_speed"] === 0 ? 5 : ConfigData.Foods[this.poolKey]["fall_speed"];
     }
 
     init() {

@@ -57,7 +57,20 @@ export default class Main {
         this.aniId = window.requestAnimationFrame(
             this.bindLoop,
             canvas
-        )
+        );
+
+        this.filterText = "";
+        if (databus.levelData.filter_food.foods.length > 0) {
+            this.filterText = databus.levelData.filter_food.permit ? "只能接:" : "不能接:";
+            for (let i = 0; i < databus.levelData.filter_food.foods.length; i++) {
+                let foodData = ConfigData.Foods[databus.levelData.filter_food.foods[i]];
+                if (i === 0) {
+                    this.filterText += foodData.name;
+                } else {
+                    this.filterText += "、" + foodData.name;
+                }
+            }
+        }
     }
 
     topBreadGenerate() {
@@ -108,8 +121,33 @@ export default class Main {
 
         for (let i = 0, il = databus.foods.length; i < il; i++) {
             let food = databus.foods[i];
-
             if (this.player.isCollideWithFood(food)) {
+                let filter = databus.levelData.filter_food;
+                if (filter.foods.length > 0) {
+                    if (filter.permit) {
+                        let has = false;
+                        for (let j = 0; j < filter.foods.length; j++) {
+                            if (food.poolKey === filter.foods[j]) {
+                                has = true;
+                                break;
+                            }
+                        }
+                        if (!has) {
+                            if (!DEBUG) {
+                                databus.gameOver = true;
+                            }
+                        }
+                    } else {
+                        for (let j = 0; j < filter.foods.length; j++) {
+                            if (food.poolKey === filter.foods[j]) {
+                                if (!DEBUG) {
+                                    databus.gameOver = true;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
                 this.addFood(food);
                 break
             }
@@ -176,8 +214,9 @@ export default class Main {
             }
         });
 
-        this.gameinfo.renderGameScore(ctx, databus.score,databus.levelData.pass_score);
+        this.gameinfo.renderGameScore(ctx, databus.score, databus.levelData.pass_score);
         this.gameinfo.renderGameLevel(ctx, databus.levelData.name_str);
+        this.gameinfo.renderFilter(ctx, this.filterText);
 
         // 游戏结束停止帧循环
         if (databus.gameOver) {

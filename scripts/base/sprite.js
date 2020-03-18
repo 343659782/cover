@@ -19,7 +19,7 @@ export default class Sprite {
      */
     drawToCanvas(ctx) {
         if (!this.visible)
-            return
+            return;
 
         ctx.drawImage(
             this.img,

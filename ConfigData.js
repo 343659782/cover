@@ -20,6 +20,8 @@ export default class ConfigData {
             width: 0,
             // 图片高度
             height: 0,
+            // 图片数量 0-3 是4张
+            image_count: 0,
         },
         //===========================蛋糕==============================
         cake: {
@@ -29,6 +31,7 @@ export default class ConfigData {
             score: 0,
             width: 0,
             height: 0,
+            image_count: 0,
         },
         //===========================橙子==============================
         orange: {
@@ -38,6 +41,7 @@ export default class ConfigData {
             score: 0,
             width: 0,
             height: 0,
+            image_count: 0,
         }
     };
 

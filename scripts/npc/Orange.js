@@ -4,8 +4,8 @@ import BaseFood from "./BaseFood";
 import ConfigData from "../../ConfigData";
 
 const ORANGE_IMG_PREFIX = 'images/chengzi';
-const ORANGE_FRAME_COUNT = 6;
-const ORANGE_IMG_SRC = ORANGE_IMG_PREFIX + '6.png';
+const ORANGE_FRAME_COUNT = ConfigData.Foods[ConfigData.orange_key]["image_count"] === 0 ? 6 : ConfigData.Foods[ConfigData.orange_key]["image_count"];
+const ORANGE_IMG_SRC = ORANGE_IMG_PREFIX + ORANGE_FRAME_COUNT + '.png';
 const ORANGE_WIDTH = ConfigData.Foods[ConfigData.orange_key]["width"] === 0 ? 60 : ConfigData.Foods[ConfigData.orange_key]["width"];
 const ORANGE_HEIGHT = ConfigData.Foods[ConfigData.orange_key]["height"] === 0 ? 25 : ConfigData.Foods[ConfigData.orange_key]["height"];
 

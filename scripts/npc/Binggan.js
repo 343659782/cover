@@ -4,8 +4,8 @@ import BaseFood from "./BaseFood";
 import ConfigData from "../../ConfigData";
 
 const BINGGAN_IMG_PREFIX = 'images/binggan';
-const BINGGAN_FRAME_COUNT = 6;
-const BINGGAN_IMG_SRC = BINGGAN_IMG_PREFIX + '6.png';
+const BINGGAN_FRAME_COUNT = ConfigData.Foods[ConfigData.binggan_key]["image_count"] === 0 ? 6 : ConfigData.Foods[ConfigData.binggan_key]["image_count"];
+const BINGGAN_IMG_SRC = BINGGAN_IMG_PREFIX + BINGGAN_FRAME_COUNT + '.png';
 const BINGGAN_WIDTH = ConfigData.Foods[ConfigData.binggan_key]["width"] === 0 ? 60 : ConfigData.Foods[ConfigData.binggan_key]["width"];
 const BINGGAN_HEIGHT = ConfigData.Foods[ConfigData.binggan_key]["height"] === 0 ? 25 : ConfigData.Foods[ConfigData.binggan_key]["height"];
 

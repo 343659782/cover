@@ -4,8 +4,8 @@ import BaseFood from "./BaseFood";
 import ConfigData from "../../ConfigData";
 
 const CAKE_IMG_PREFIX = 'images/dangao';
-const CAKE_FRAME_COUNT = 6;
-const CAKE_IMG_SRC = CAKE_IMG_PREFIX + '6.png';
+const CAKE_FRAME_COUNT = ConfigData.Foods[ConfigData.cake_key]["image_count"] === 0 ? 6 : ConfigData.Foods[ConfigData.cake_key]["image_count"];
+const CAKE_IMG_SRC = CAKE_IMG_PREFIX + CAKE_FRAME_COUNT + '.png';
 const CAKE_WIDTH = ConfigData.Foods[ConfigData.cake_key]["width"] === 0 ? 64 : ConfigData.Foods[ConfigData.cake_key]["width"];
 const CAKE_HEIGHT = ConfigData.Foods[ConfigData.cake_key]["height"] === 0 ? 40 : ConfigData.Foods[ConfigData.cake_key]["height"];
 

@@ -220,7 +220,7 @@ export default class Main {
 
         // 游戏结束停止帧循环
         if (databus.gameOver) {
-            this.gameinfo.renderGameOver(ctx, databus.score);
+            this.gameinfo.renderPanel(ctx, databus.score, '游戏结束', '重新开始');
 
             if (!this.hasEventBind) {
                 this.hasEventBind = true;

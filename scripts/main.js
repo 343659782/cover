@@ -86,7 +86,7 @@ export default class Main {
     }
 
     cakeGenerate() {
-        if (databus.frame % 170 === 0) {
+        if (databus.frame % 180 === 0) {
             let cake = databus.pool.getItemByClass(ConfigData.cake_key, Cake);
             cake.init();
             databus.foods.push(cake);

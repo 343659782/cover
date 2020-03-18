@@ -27,7 +27,9 @@ export default class ConfigData {
     static LevelData = [
         {
             index: 0,
+            // 标题文字
             name_str: "第一关",
+            // 过关分数条件
             pass_score: 100,
         },
         {

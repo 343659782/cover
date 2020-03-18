@@ -6,8 +6,8 @@ import ConfigData from "../../ConfigData";
 const CAKE_IMG_PREFIX = 'images/dangao';
 const CAKE_FRAME_COUNT = 6;
 const CAKE_IMG_SRC = CAKE_IMG_PREFIX + '6.png';
-const CAKE_WIDTH = 64;
-const CAKE_HEIGHT = 40;
+const CAKE_WIDTH = ConfigData.cake_width === 0 ? 64 : ConfigData.cake_width;
+const CAKE_HEIGHT = ConfigData.cake_height === 0 ? 40 : ConfigData.cake_height;
 
 const __ = {
     speed: Symbol('speed')

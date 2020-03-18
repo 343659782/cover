@@ -6,8 +6,8 @@ import ConfigData from "../../ConfigData";
 const BINGGAN_IMG_PREFIX = 'images/binggan';
 const BINGGAN_FRAME_COUNT = 6;
 const BINGGAN_IMG_SRC = BINGGAN_IMG_PREFIX + '6.png';
-const BINGGAN_WIDTH = 60;
-const BINGGAN_HEIGHT = 25;
+const BINGGAN_WIDTH = ConfigData.binggan_width === 0 ? 60 : ConfigData.binggan_width;
+const BINGGAN_HEIGHT = ConfigData.binggan_height === 0 ? 25 : ConfigData.binggan_height;
 
 const __ = {
     speed: Symbol('speed')

@@ -6,8 +6,8 @@ import ConfigData from "../../ConfigData";
 const ORANGE_IMG_PREFIX = 'images/chengzi';
 const ORANGE_FRAME_COUNT = 6;
 const ORANGE_IMG_SRC = ORANGE_IMG_PREFIX + '6.png';
-const ORANGE_WIDTH = 60;
-const ORANGE_HEIGHT = 25;
+const ORANGE_WIDTH = ConfigData.orange_width === 0 ? 60 : ConfigData.orange_width;
+const ORANGE_HEIGHT = ConfigData.orange_height === 0 ? 25 : ConfigData.orange_height;
 
 const __ = {
     speed: Symbol('speed')

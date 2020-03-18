@@ -136,9 +136,9 @@ export default class Main {
      * 每一帧重新绘制所有的需要展示的元素
      */
     render() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        this.bg.render(ctx)
+        this.bg.render(ctx);
 
         this.player.drawToCanvas(ctx);
 
@@ -146,14 +146,14 @@ export default class Main {
             .concat(databus.foods)
             .forEach((item) => {
                 item.drawToCanvas(ctx)
-            })
+            });
 
 
         databus.animations.forEach((ani) => {
             if (ani.isPlaying) {
                 ani.aniRender(ctx)
             }
-        })
+        });
 
         this.gameinfo.renderGameScore(ctx, databus.score);
 
@@ -181,7 +181,7 @@ export default class Main {
             .concat(databus.foods)
             .forEach((item) => {
                 item.update()
-            })
+            });
 
         this.topBreadGenerate();
         this.binggansGenerate();

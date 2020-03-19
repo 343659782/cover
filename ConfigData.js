@@ -14,6 +14,8 @@ export default class ConfigData {
             name: "饼干",
             // 下落速度
             fall_speed: 0,
+            // 动画速度 默认5
+            anim_speed: 0,
             // 接取得分
             score: 0,
             // 图片宽度
@@ -28,6 +30,8 @@ export default class ConfigData {
             key: ConfigData.cake_key,
             name: "蛋糕",
             fall_speed: 0,
+            // 动画速度 默认5
+            anim_speed: 0,
             score: 0,
             width: 0,
             height: 0,
@@ -38,6 +42,8 @@ export default class ConfigData {
             key: ConfigData.orange_key,
             name: "橙子",
             fall_speed: 0,
+            // 动画速度 默认5
+            anim_speed: 0,
             score: 0,
             width: 0,
             height: 0,

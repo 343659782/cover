@@ -28,6 +28,7 @@ export default class Orange extends BaseFood {
         this.poolKey = ConfigData.orange_key;
         this.score = ConfigData.Foods[this.poolKey]["score"] === 0 ? 50 : ConfigData.Foods[this.poolKey]["score"];
         this.speed = ConfigData.Foods[this.poolKey]["fall_speed"] === 0 ? 5 : ConfigData.Foods[this.poolKey]["fall_speed"];
+        this.interval = 1000 / ConfigData.Foods[this.poolKey]["anim_speed"] === 0 ? 5 : ConfigData.Foods[this.poolKey]["anim_speed"];
     }
 
     init() {

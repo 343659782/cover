@@ -178,6 +178,7 @@ export default class Main {
         let y = e.touches[0].clientY;
 
         let area = this.gameinfo.btnArea;
+        let area2 = this.gameinfo.btn2Area;
 
         if (x >= area.startX
             && x <= area.endX
@@ -188,6 +189,17 @@ export default class Main {
             } else if (databus.levelOver) {
                 this.nextLevel();
             }
+
+        if (area2) {
+            if (x >= area2.startX
+                && x <= area2.endX
+                && y >= area2.startY
+                && y <= area2.endY) {
+                databus.reset();
+                databus.levelData = ConfigData.LevelData[databus.levelData.index];
+                this.restart();
+            }
+        }
     }
 
     /**
@@ -220,7 +232,11 @@ export default class Main {
 
         // 游戏结束停止帧循环
         if (databus.gameOver) {
-            this.gameinfo.renderPanel(ctx, databus.score, '游戏结束', '重新开始');
+            if (databus.levelData.index === ConfigData.LevelData.length - 1) {
+                this.gameinfo.renderPanel(ctx, databus.score, '游戏结束', '重新开始');
+            } else {
+                this.gameinfo.renderPanel(ctx, databus.score, '游戏结束', '重新开始', "再试一次");
+            }
 
             if (!this.hasEventBind) {
                 this.hasEventBind = true;

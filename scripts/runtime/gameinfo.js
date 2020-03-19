@@ -27,7 +27,7 @@ export default class GameInfo {
         )
     }
 
-    renderFilter(ctx, text){
+    renderFilter(ctx, text) {
         ctx.fillStyle = "#ffffff";
         ctx.font = "20px Arial";
 
@@ -38,7 +38,7 @@ export default class GameInfo {
         )
     }
 
-    renderPanel(ctx, score, title, btnText) {
+    renderPanel(ctx, score, title, btnText, btn2Text = "") {
         ctx.drawImage(atlas, 0, 0, 119, 108, screenWidth / 2 - 150, screenHeight / 2 - 100, 300, 300);
 
         ctx.fillStyle = "#ffffff";
@@ -56,19 +56,50 @@ export default class GameInfo {
             screenHeight / 2 - 100 + 130
         );
 
+        let btn1Y = 180;
+        if (btn2Text.length > 0) {
+            btn1Y = 150
+        }
+
         ctx.drawImage(
             atlas,
             120, 6, 39, 24,
             screenWidth / 2 - 60,
-            screenHeight / 2 - 100 + 180,
+            screenHeight / 2 - 100 + btn1Y,
             120, 40
         );
 
         ctx.fillText(
             btnText,
             screenWidth / 2 - btnText.length * 10,
-            screenHeight / 2 - 100 + 205
+            screenHeight / 2 - 100 + btn1Y + 25
         );
+
+        if (btn2Text.length > 0) {
+            let btn2Y = 200;
+
+            ctx.drawImage(
+                atlas,
+                120, 6, 39, 24,
+                screenWidth / 2 - 60,
+                screenHeight / 2 - 100 + btn2Y,
+                120, 40
+            );
+
+            ctx.fillText(
+                btn2Text,
+                screenWidth / 2 - btn2Text.length * 10,
+                screenHeight / 2 - 100 + btn2Y + 25
+            );
+
+            this.btn2Area = {
+                startX: screenWidth / 2 - 40,
+                startY: screenHeight / 2 - 100 + btn2Y,
+                endX: screenWidth / 2 + 50,
+                endY: screenHeight / 2 - 100 + btn2Y + 40
+            }
+        }
+
 
         /**
          * 重新开始按钮区域
@@ -76,9 +107,9 @@ export default class GameInfo {
          */
         this.btnArea = {
             startX: screenWidth / 2 - 40,
-            startY: screenHeight / 2 - 100 + 180,
+            startY: screenHeight / 2 - 100 + btn1Y,
             endX: screenWidth / 2 + 50,
-            endY: screenHeight / 2 - 100 + 255
+            endY: screenHeight / 2 - 100 + btn1Y + 40
         }
     }
 }

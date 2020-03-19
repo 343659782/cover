@@ -21,7 +21,7 @@ export default class Orange extends BaseFood {
         super(ORANGE_IMG_SRC, ORANGE_WIDTH, ORANGE_HEIGHT);
 
         this.initExplosionAnimation();
-        this.playAnimation(0, false);
+
         this.playing = false;
         this.timer = 0;
         this.animTime = 1;
@@ -35,7 +35,9 @@ export default class Orange extends BaseFood {
         this.y = -this.height;
 
         this[__.speed] = this.speed;
-        this.visible = true
+
+        this.playAnimation(0, false);
+        this.visible = true;
     }
 
     // 预定义爆炸的帧动画

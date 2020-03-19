@@ -81,9 +81,5 @@ export default class GameInfo {
             endY: screenHeight / 2 - 100 + 255
         }
     }
-
-    renderGameOver(ctx, score) {
-        this.renderPanel(ctx, score, '游戏结束', '重新开始');
-    }
 }
 

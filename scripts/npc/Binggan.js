@@ -21,7 +21,6 @@ export default class Binggan extends BaseFood {
         super(BINGGAN_IMG_SRC, BINGGAN_WIDTH, BINGGAN_HEIGHT);
 
         this.initExplosionAnimation();
-        this.playAnimation(0, false);
         this.playing = false;
         this.timer = 0;
         this.animTime = 1;
@@ -35,7 +34,8 @@ export default class Binggan extends BaseFood {
         this.y = -this.height;
 
         this[__.speed] = this.speed;
-        this.visible = true
+        this.playAnimation(0, false);
+        this.visible = true;
     }
 
     // 预定义爆炸的帧动画

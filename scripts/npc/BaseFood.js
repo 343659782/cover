@@ -26,6 +26,10 @@ export default class BaseFood extends animation {
         this.interval = 1000 / 5;
     }
 
+    play() {
+        this.playAnimation(0, false);
+    }
+
     updatePosX(dt) {
         let originTargetX = this.targetX - this.width * 0.5;
 

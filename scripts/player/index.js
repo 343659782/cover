@@ -84,9 +84,7 @@ export default class Player extends Sprite {
             if (this.checkIsFingerOnAir(x, y)) {
                 this.touched = true;
 
-                if (!databus.gameOver && !databus.levelOver && !databus.gameFinish) {
-                    this.setAirPosAcrossFingerPosZ(x, y)
-                }
+                this.setAirPosAcrossFingerPosZ(x, y)
             }
 
         }).bind(this));
@@ -97,7 +95,7 @@ export default class Player extends Sprite {
             let x = e.touches[0].clientX;
             let y = e.touches[0].clientY;
 
-            if (this.touched && !databus.gameOver && !databus.levelOver && !databus.gameFinish)
+            if (this.touched)
                 this.setAirPosAcrossFingerPosZ(x, y)
 
         }).bind(this));

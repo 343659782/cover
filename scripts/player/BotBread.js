@@ -107,7 +107,7 @@ export default class BotBread extends Sprite {
             let x = e.touches[0].clientX;
             let y = e.touches[0].clientY;
 
-            if (this.touched)
+            if (this.touched && !databus.gameOver && !databus.levelOver && !databus.gameFinish)
                 this.setAirPosAcrossFingerPosZ(x, y);
 
         }).bind(this));
